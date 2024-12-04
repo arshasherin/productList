@@ -84,23 +84,31 @@ class ProductScreen extends StatelessWidget {
                                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                                   child: Row(
                                     children: [
-                                      Text(data.title.toString(), style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600)),
+                                      Expanded(
+                                          child: Text(
+                                        data.title.toString(),
+                                        style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w600, overflow: TextOverflow.ellipsis),
+                                        maxLines: 2,
+                                      )),
                                       const Spacer(),
                                       IconButton(
-                                          onPressed: () {
-                                            vm.delete(data);
-                                          },
-                                          icon: const Icon(Icons.delete, color: Colors.red)),
+                                        onPressed: () {
+                                          vm.delete(data);
+                                        },
+                                        icon: const Icon(Icons.delete, color: Colors.red),
+                                      ),
                                       5.width,
                                       IconButton(
-                                          onPressed: () {
-                                            showDialog(
-                                                context: context,
-                                                builder: (BuildContext context) {
-                                                  return const AddProduct();
-                                                });
-                                          },
-                                          icon: const Icon(Icons.add, color: Colors.blue))
+                                        onPressed: () {
+                                          showDialog(
+                                            context: context,
+                                            builder: (BuildContext context) {
+                                              return const AddProduct();
+                                            },
+                                          );
+                                        },
+                                        icon: const Icon(Icons.add, color: Colors.blue),
+                                      ),
                                     ],
                                   ),
                                 ),
