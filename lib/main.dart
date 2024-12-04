@@ -5,13 +5,9 @@ import 'package:testproject/homescreen.dart';
 import 'viewmodel/product_vm.dart';
 
 void main() {
-   runApp( ChangeNotifierProvider(
-      create: (context) => ProductViewModel(),
-      child: const MaterialApp(
-        home: MyApp(),
-      ),
-    ),);
- 
+  runApp(
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -19,15 +15,18 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-        
+    return ChangeNotifierProvider(
+      create: (context) => ProductViewModel(),
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          useMaterial3: true,
+        ),
+        home: const ProductScreen(),
+        debugShowCheckedModeBanner: false, 
       ),
-      debugShowCheckedModeBanner: false,
-      home: const ProductScreen(),
     );
   }
 }
+
